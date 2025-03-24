@@ -1,4 +1,4 @@
-package model;
+package com.patdimby.model;
 
 import jakarta.persistence.*;
 
