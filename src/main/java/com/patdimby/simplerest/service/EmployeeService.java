@@ -1,56 +1,19 @@
 package com.patdimby.simplerest.service;
 
+import java.util.List;
 
 import com.patdimby.simplerest.model.Employee;
-import com.patdimby.simplerest.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
-import java.util.Optional;
 
-/** This class represents the service for employees. */
-@Service
-public class EmployeeService {
+public interface EmployeeService {
+    List<Employee> getAllEmployees();
 
-  /** The employee repository. */
-  @Autowired private EmployeeRepository employeeRepository;
+    void saveEmployee(Employee employee);
 
-  /**
-   * Get all employees.
-   *
-   * @return List of all employees
-   */
-  public List<Employee> getAllEmployees() {
-    return employeeRepository.findAllWithDepartments();
-  }
+    Employee getEmployeeById(long id);
 
-  /**
-   * Get employee by ID.
-   *
-   * @param id ID of the employee to be retrieved
-   * @return Employee with the specified ID
-   */
-  public Optional<Employee> getEmployeeById(Long id) {
-    return employeeRepository.findById(id);
-  }
+    void deleteEmployeeById(long id);
 
-  /**
-   * Save an employee.
-   *
-   * @param employee Employee to be saved
-   * @return Saved employee
-   */
-  public Employee saveEmployee(Employee employee) {
-    return employeeRepository.save(employee);
-  }
-
-  /**
-   * Update an employee.
-   *
-   * @param id ID of the employee to be updated
-   */
-  public void deleteEmployee(Long id) {
-    employeeRepository.deleteById(id);
-  }
+    Page<Employee> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
 }
