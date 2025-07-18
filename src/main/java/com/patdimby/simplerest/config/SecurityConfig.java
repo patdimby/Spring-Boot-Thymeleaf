@@ -25,7 +25,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final JwtAuthenticationFilter jwtAuthenticationFilter; // Ton filtre JWT
+    private final JwtAuthenticationFilter jwtAuthenticationFilter; // Your JWT filter
     private final CustomUserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final CustomAccessDeniedHandler accessDeniedHandler;
@@ -37,26 +37,26 @@ public class SecurityConfig {
         return provider;
     }
 
-    // Bean pour l’AuthenticationManager
+    // Bean for AuthenticationManager
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
-    // Configuration de la chaîne de filtres de sécurité
+    // Filter security chain configuration.
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api-docs").permitAll() // for swagger.
-                        .requestMatchers("/student/**").permitAll() // for actuator.
+                        .requestMatchers("/v3/api-docs").permitAll() // for swagger.
+                        .requestMatchers("/swagger-ui.html").permitAll() // for swagger.
                         .requestMatchers("/hello").permitAll() // for test.
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/products").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception
-                        .accessDeniedHandler(accessDeniedHandler) // 🧩 AJOUT ICI
+                        .accessDeniedHandler(accessDeniedHandler) // 🧩 Add here.
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
