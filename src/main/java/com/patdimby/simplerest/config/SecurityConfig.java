@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -51,9 +52,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/v3/api-docs").permitAll() // for swagger.
                         .requestMatchers("/swagger-ui.html").permitAll() // for swagger.
-                        .requestMatchers("/hello").permitAll() // for test.
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/api/products").permitAll()
+                        .requestMatchers("/blog/**").permitAll() // for blog.
+                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll() // for static files.
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception
                         .accessDeniedHandler(accessDeniedHandler) // 🧩 Add here.
