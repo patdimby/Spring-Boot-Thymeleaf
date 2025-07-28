@@ -14,6 +14,7 @@ public class PostMapper {
                 .shortDescription(post.getShortDescription())
                 .createdOn(post.getCreatedOn())
                 .updatedOn(post.getUpdatedOn())
+                .img(post.getImg())
                 .build();
     }
 
@@ -27,6 +28,7 @@ public class PostMapper {
                 .shortDescription(postDto.getShortDescription())
                 .createdOn(postDto.getCreatedOn())
                 .updatedOn(postDto.getUpdatedOn())
+                .img(postDto.getImg())
                 .build();
     }
 }

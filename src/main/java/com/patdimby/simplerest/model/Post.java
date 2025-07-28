@@ -34,4 +34,6 @@ public class Post {
 
     @UpdateTimestamp
     private LocalDateTime updatedOn;
+
+    private int img;
 }
