@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -50,8 +49,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/v3/api-docs").permitAll() // for swagger.
-                        .requestMatchers("/swagger-ui.html").permitAll() // for swagger.
+                        .requestMatchers("/v3/api-docs","/swagger-ui.html").permitAll() // for swagger.
                         .requestMatchers("/blog/**").permitAll() // for blog.
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll() // for static files.
                         .anyRequest().authenticated())
