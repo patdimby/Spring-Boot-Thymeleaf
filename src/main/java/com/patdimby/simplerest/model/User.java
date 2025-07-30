@@ -1,15 +1,19 @@
 package com.patdimby.simplerest.model;
 
 import java.util.Collection;
-import lombok.Data;
-import lombok.AllArgsConstructor;
+
+import lombok.*;
 import jakarta.validation.constraints.*;
 import jakarta.persistence.*;
 
 
 @Entity
 @Data
+@Builder
+@Setter
+@Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name =  "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 	
@@ -24,20 +28,25 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "name")
+
+    @Column(name = "name")
 	private String username;
 	
 	@Email(message = "Invalid email address")
     @NotBlank(message = "Email is mandatory")
 	private String email;
 	
-	@NotBlank(message = "Password cannot be black")
+	@NotBlank(message = "Password cannot be blank")
 	private String password;
+
+	private String confirmpassword;
 	
 	@NotNull(message = "Role is mandatory")
 	private UserRole role; // ROLE_USER, ROLE_ADMIN
+
+	private Sex sex; // MALE, FEMALE
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(
 			name = "users_roles",
 			joinColumns = @JoinColumn(
@@ -46,10 +55,7 @@ public class User {
 				            name = "role_id", referencedColumnName = "id"))
 	
 	private Collection<Role> roles;
-	
-	public User() {
-		
-	}
+
 
 	@Override
     public String toString() {
@@ -61,15 +67,7 @@ public class User {
                '}';
     }
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -77,41 +75,6 @@ public class User {
 		this.password = password;
 		this.roles = roles;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public Collection<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
-	}
+
 
 }

@@ -1,6 +1,5 @@
 package com.patdimby.simplerest.config;
 
-
 import com.patdimby.simplerest.security.CustomAccessDeniedHandler;
 import com.patdimby.simplerest.security.JwtAuthenticationFilter;
 import com.patdimby.simplerest.service.CustomUserDetailsService;
@@ -51,7 +50,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/v3/api-docs","/swagger-ui.html").permitAll() // for swagger.
                         .requestMatchers("/blog/**").permitAll() // for blog.
-                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll() // for static files.
+                        .requestMatchers("/auth/**").permitAll() // api rest auth.
+                        .requestMatchers("/css/**", "/js/**", "/img/**", "/fontawesome/**").permitAll() // for static files.
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception
                         .accessDeniedHandler(accessDeniedHandler) // 🧩 Add here.

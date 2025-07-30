@@ -1,7 +1,14 @@
 package com.patdimby.simplerest.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+
+@Data
+@Builder
+@Setter
+@Getter
+@AllArgsConstructor
 @Entity
 @Table(name = "role")
 public class Role {

@@ -1,5 +1,6 @@
 package com.patdimby.simplerest.service;
 
+import com.patdimby.simplerest.dto.UserDto;
 import com.patdimby.simplerest.exception.ResourceAlreadyExistsException;
 import com.patdimby.simplerest.exception.ResourceNotFoundException;
 import com.patdimby.simplerest.model.User;
@@ -19,9 +20,10 @@ public class UserService {
 
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
+	//private final ModelMapper modelMapper;
 
 	public User save(User user) {
-		userRepository.findByEmail(user.getEmail()).ifPresent(existing -> {
+			userRepository.findByEmail(user.getEmail()).ifPresent(existing -> {
 			throw new ResourceAlreadyExistsException("User with same email already regitered.");
 		});
 
@@ -34,6 +36,11 @@ public class UserService {
 			user.setRole(UserRole.ROLE_USER);
 		}
 
+		return userRepository.save(user);
+	}
+
+	public User saveUserDto(UserDto userDto) {
+		User user = new User(null, userDto.getFirstName(), userDto.getLastName(),userDto.getUsername(), userDto.getEmail(), userDto.getPassword(), null, null, null, null);
 		return userRepository.save(user);
 	}
 
@@ -100,4 +107,6 @@ public class UserService {
 	public Optional<User> findByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
+
+	
 }
