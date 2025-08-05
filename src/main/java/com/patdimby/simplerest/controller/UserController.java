@@ -1,10 +1,15 @@
 package com.patdimby.simplerest.controller;
 
+import com.patdimby.simplerest.dto.UserDto;
+import com.patdimby.simplerest.exception.BusinessException;
 import com.patdimby.simplerest.model.User;
 import com.patdimby.simplerest.service.AuthService;
 import com.patdimby.simplerest.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,13 +19,17 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1")
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequiredArgsConstructor
 public class UserController {
 
+
     private final UserService userService;
+
     private final AuthService authService;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // 🔸 Create an user
     @PostMapping
@@ -95,4 +104,21 @@ public class UserController {
         return user.<ResponseEntity<?>>map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(404).body("❌ Cannot find user with this email : " + email));
     }
+
+    @PostMapping("/users")
+    public ResponseEntity<Boolean> login(@RequestBody UserDto userModel) throws BusinessException {
+        logger.debug("Entering method login");
+        boolean result = userService.login(userModel);
+        ResponseEntity<Boolean> responseEntity = new ResponseEntity<>(result, HttpStatus.OK);
+        logger.debug("Exiting method login");
+        return responseEntity;
+    }
+
+    @PostMapping("/users/register")
+    public ResponseEntity<Long> register(@Valid @RequestBody UserDto userModel) throws BusinessException {
+
+        Long result = userService.register(userModel);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+
 }

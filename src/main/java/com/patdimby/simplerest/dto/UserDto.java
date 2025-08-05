@@ -1,5 +1,7 @@
 package com.patdimby.simplerest.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.patdimby.simplerest.model.Role;
 import com.patdimby.simplerest.model.Sex;
 import com.patdimby.simplerest.model.UserRole;
@@ -16,6 +18,7 @@ import java.util.Collection;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
 
     private Long id;

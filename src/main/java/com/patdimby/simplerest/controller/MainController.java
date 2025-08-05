@@ -50,7 +50,7 @@ public class MainController {
     @PostMapping("/register")
     public String register(@ModelAttribute UserDto userDto) {
         userDto.setRole(UserRole.ROLE_ADMIN);
-        System.out.println(userDto.toString());
+        System.out.println(userDto);
         userService.saveUserDto(userDto);
         return "redirect:blog/login";
     }
