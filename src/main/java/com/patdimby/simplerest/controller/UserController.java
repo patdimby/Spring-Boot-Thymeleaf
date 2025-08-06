@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@RequestMapping("/api")
+//@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequiredArgsConstructor
 public class UserController {
 

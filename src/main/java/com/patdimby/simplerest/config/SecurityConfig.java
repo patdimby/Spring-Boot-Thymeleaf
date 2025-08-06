@@ -48,10 +48,9 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/v3/api-docs","/swagger-ui.html").permitAll() // for swagger.
-                        .requestMatchers("/blog/**").permitAll() // for blog.
-                        .requestMatchers("/auth/**").permitAll() // api rest auth.
-                        .requestMatchers("/css/**", "/js/**", "/img/**", "/fontawesome/**").permitAll() // for static files.
+                        .requestMatchers("/swagger-ui.html", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/blog/**","/api/**").permitAll() // for blog and api.
+                        .requestMatchers("/auth/**").permitAll() // auth.
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception
                         .accessDeniedHandler(accessDeniedHandler) // 🧩 Add here.

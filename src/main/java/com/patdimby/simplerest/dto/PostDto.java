@@ -1,14 +1,13 @@
 package com.patdimby.simplerest.dto;
 
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,4 +23,5 @@ public class PostDto {
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
     private int img;
+    private String author;
 }

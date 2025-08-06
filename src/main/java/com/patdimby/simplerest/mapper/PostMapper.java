@@ -15,6 +15,7 @@ public class PostMapper {
                 .createdOn(post.getCreatedOn())
                 .updatedOn(post.getUpdatedOn())
                 .img(post.getImg())
+                .author(post.getAuthor())
                 .build();
     }
 
@@ -29,6 +30,7 @@ public class PostMapper {
                 .createdOn(postDto.getCreatedOn())
                 .updatedOn(postDto.getUpdatedOn())
                 .img(postDto.getImg())
+                .author(postDto.getAuthor())
                 .build();
     }
 }

@@ -7,9 +7,10 @@ import org.springframework.data.domain.Page;
 
 
 public interface EmployeeService {
-    List<Employee> getAllEmployees();
+    
+	List<Employee> getAllEmployees();
 
-    void saveEmployee(Employee employee);
+    Employee saveEmployee(Employee employee);
 
     Employee getEmployeeById(long id);
 

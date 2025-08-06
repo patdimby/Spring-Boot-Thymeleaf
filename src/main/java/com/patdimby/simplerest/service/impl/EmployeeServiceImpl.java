@@ -1,11 +1,11 @@
-package com.patdimby.simplerest.service;
+package com.patdimby.simplerest.service.impl;
 
 import java.util.List;
 import java.util.Optional;
 
-
 import com.patdimby.simplerest.model.Employee;
 import com.patdimby.simplerest.repository.EmployeeRepository;
+import com.patdimby.simplerest.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,8 +26,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void saveEmployee(Employee employee) {
+    public Employee saveEmployee(Employee employee) {
         this.employeeRepository.save(employee);
+        return employee;
     }
 
     @Override

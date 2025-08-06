@@ -36,4 +36,6 @@ public class Post {
     private LocalDateTime updatedOn;
 
     private int img;
+	
+    private String author;
 }

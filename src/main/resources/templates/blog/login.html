@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="blog/amaze/header::head-fragment"></head>
+<head>
+	<meta charset="utf-8">
+	<title>${title}</title>
+	<!-- Description, Keywords and Author -->
+	<meta name="description" content="Your description">
+	<meta name="keywords" content="Your,Keywords">
+	<meta name="author" content="ResponsiveWebInc">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Styles -->
+	<link th:href="@{/blog/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/blog/fontawesome/css/fontawesome.css}" rel="stylesheet">
+	<link th:href="@{/blog/css/style.css}" rel="stylesheet">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="#">
+</head>
   <body>
     <div class="wrapper">
-      <div th:replace="blog/amaze/header::header-logreg"></div>
+     <div th:insert= "/blog/logreg :: logreg"></div>
       <!-- banner -->
       <div class="banner">
         <div class="container">
@@ -40,10 +57,10 @@
       <footer th:replace="blog/amaze/footer::footer-fragment"></footer>
     </div>
     <!-- Javascript files -->
-    <script th:src="@{/js/jquery.js}"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-    <script th:src="@{/js/respond.min.js}"></script>
-    <script th:src="@{/js/html5shiv.js}"></script>
-    <script th:src="@{/js/custom.js}"></script>
+    <script th:src="@{/blog/js/jquery.js}"></script>
+    <script th:src="@{/blog/js/bootstrap.min.js}"></script>
+    <script th:src="@{/blog/js/respond.min.js}"></script>
+    <script th:src="@{/blog/js/html5shiv.js}"></script>
+    <script th:src="@{/blog/js/custom.js}"></script>
   </body>
 </html>
