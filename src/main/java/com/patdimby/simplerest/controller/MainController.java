@@ -1,14 +1,8 @@
 package com.patdimby.simplerest.controller;
 
 import com.patdimby.simplerest.dto.UserDto;
-import com.patdimby.simplerest.model.Blog;
-import com.patdimby.simplerest.model.Event;
-import com.patdimby.simplerest.model.Team;
-import com.patdimby.simplerest.model.UserRole;
-import com.patdimby.simplerest.service.BlogService;
-import com.patdimby.simplerest.service.EventService;
-import com.patdimby.simplerest.service.TeamService;
-import com.patdimby.simplerest.service.UserService;
+import com.patdimby.simplerest.model.*;
+import com.patdimby.simplerest.service.*;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,22 +22,26 @@ public class MainController {
 	private final EventService eventService;
 	private final TeamService teamService;
     private final UserService userService;
+    private final ResumeService resumeService;
 
-    public MainController(BlogService blogService, EventService eventService, TeamService teamService, UserService userService) {
+    public MainController(BlogService blogService, EventService eventService, TeamService teamService, UserService userService, ResumeService resumeService) {
         this.blogService = blogService;
 		this.eventService = eventService;
 		this.teamService = teamService;
         this.userService = userService;
+        this.resumeService = resumeService;
     }
 
     @GetMapping("/index")
     public String getIndex(Model model) {
-        List<Blog> blogs = blogService.getAllBlogs();
+       /* List<Blog> blogs = blogService.getAllBlogs();
 		model.addAttribute("blogs", blogs);
 		List<Team> teams = teamService.getAllTeams();
 		model.addAttribute("teams", teams);
 		List<Event> events = eventService.getAllEvents();
-        model.addAttribute("events", events);
+        model.addAttribute("events", events); */
+        List<Resume> resumes = resumeService.getAllResumes();
+        model.addAttribute("resumes", resumes);
         return "blog/index";
     }
 

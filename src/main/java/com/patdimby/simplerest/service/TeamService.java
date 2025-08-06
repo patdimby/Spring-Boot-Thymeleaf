@@ -5,6 +5,5 @@ import java.util.List;
 import com.patdimby.simplerest.model.Team;
 
 public interface TeamService {
-    
-	List<Team> getAllTeams();   
+    List<Team> getAllTeams();
 }

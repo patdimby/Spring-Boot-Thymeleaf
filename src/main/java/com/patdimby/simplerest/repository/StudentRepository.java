@@ -7,7 +7,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+@RepositoryRestResource
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 

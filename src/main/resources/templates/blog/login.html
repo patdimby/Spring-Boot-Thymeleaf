@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
-	<title>${title}</title>
+	<title th:text="${title}"></title>
 	<!-- Description, Keywords and Author -->
 	<meta name="description" content="Your description">
 	<meta name="keywords" content="Your,Keywords">
@@ -19,8 +19,8 @@
 	<link rel="shortcut icon" href="#">
 </head>
   <body>
-    <div class="wrapper">
-     <div th:insert= "/blog/logreg :: logreg"></div>
+    <div class="wrapper">     
+	 <header th:replace="blog/logreg::logreg"></header>
       <!-- banner -->
       <div class="banner">
         <div class="container">
@@ -54,7 +54,7 @@
         </div>
       </div>
       <!-- banner end -->
-      <footer th:replace="blog/amaze/footer::footer-fragment"></footer>
+      <footer th:replace="blog/footer::footer"></footer>
     </div>
     <!-- Javascript files -->
     <script th:src="@{/blog/js/jquery.js}"></script>

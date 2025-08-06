@@ -7,21 +7,18 @@
 	<meta name="description" content="Your description">
 	<meta name="keywords" content="Your,Keywords">
 	<meta name="author" content="ResponsiveWebInc">
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<!-- Styles -->
 	<link th:href="@{/blog/css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{/blog/fontawesome/css/fontawesome.css}" rel="stylesheet">
+	<link th:href="@{/blog/fontawesome/css/all.css}" rel="stylesheet">
 	<link th:href="@{/blog/css/style.css}" rel="stylesheet">
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="#">
 </head>
 	<body>
-		<div class="wrapper">
-			<!-- header <div th:insert= "footer :: footer"></div>-->
-			<!--<div th:insert= "menu :: menu"></div>-->
+		<div class="wrapper">			
+			<!-- menu -->
 			<header th:replace="blog/menu::menu"></header>
 			<!-- end menu -->
 			<!-- banner -->
@@ -39,37 +36,15 @@
 			<div class="after-banner">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-4 col-sm-4">
+						<div th:each="resume:${resumes}" class="col-md-4 col-sm-4">
 							<!-- after banner item -->
 							<div class="ab-item">
 								<!-- heading -->
-								<h3>Focus on Systems</h3>
+								<h3 th:text="${resume.designation}"></h3>
 								<!-- paragraph -->
-								<p>While our prices are competitive, it's the value that's unmatched.</p>
+								<p th:text="{resume.heading}"></p>
 								<br>
-								<a href="#">Read More</a>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<!-- after banner item -->
-							<div class="ab-item">
-								<!-- heading -->
-								<h3>Plan of Action</h3>
-								<!-- paragraph -->
-								<p>While our prices are competitive, it's the value that's unmatched.</p>
-								<br>
-								<a href="#">Read More</a>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<!-- after banner item -->
-							<div class="ab-item">
-								<!-- heading -->
-								<h3>Quality Compliance</h3>
-								<!-- paragraph -->
-								<p>While our prices are competitive, it's the value that's unmatched.</p>
-								<br>
-								<a href="#">Read More</a>
+								<a th:href="@{{resume.link}}">Read More..</a>
 							</div>
 						</div>
 					</div>
@@ -259,8 +234,8 @@
 			</div>
 			<!-- team end -->
 			<!-- footer -->
-			<div th:insert= "blog/footer :: footer"></div>
-			<!-- end footer -->
+			<footer th:replace="blog/footer::footer"></footer>			
+			<!-- end footer --> 
 		</div>		
 		<!-- Javascript files -->		
 		<script th:src="@{/blog/js/jquery.js}" type="text/javascript"></script>		
