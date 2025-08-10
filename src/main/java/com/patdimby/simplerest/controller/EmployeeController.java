@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -110,15 +107,14 @@ public class EmployeeController {
         return employee;
     }
 
-    // get employee by id rest api
+    // get employee by id
     @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Employee employee = employeeService.getEmployeeById(id);
         return ResponseEntity.ok(employee);
     }
 
-    // update employee rest api
-
+    // update employee
     @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
         Employee employee = employeeService.getEmployeeById(id);
@@ -129,12 +125,15 @@ public class EmployeeController {
         return ResponseEntity.ok(updatedEmployee);
     }
 
-    // delete employee rest api
-	@Operation(summary = "Delete an employee by its id")
+    // delete employee
+    @Operation(summary = "Delete an employee by its id")
     @DeleteMapping("/employees/{id}")
-    @ApiResponses(value={@ApiResponse(responseCode = "200", description = "Deleted an employee",
-    content ={@Content(mediaType = "application/json", schema=@Schema(implementation=Employee.class))}),
-
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Deleted an employee",
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = Employee.class))}),
+            @ApiResponse(responseCode = "401", description = "Unauthorized user", content = @Content),
+			@ApiResponse(responseCode = "404", description = "Employee not found", content = @Content),
+			@ApiResponse(responseCode = "400", description = "Invalid employee id", content = @Content)
 
     })
     public ResponseEntity<Employee> deleteEmployee(@PathVariable Long id) {
