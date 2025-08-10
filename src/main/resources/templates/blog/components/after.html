@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+</head>
+<body>
+<!-- after banner -->
+<div th:fragment="after" class="after-banner">
+    <div class="container">
+        <div class="row">
+            <div th:each="resume:${resumes}" class="col-md-4 col-sm-4">
+                <!-- after banner item -->
+                <div class="ab-item">
+                    <!-- heading -->
+                    <h3 th:text="${resume.designation}"></h3>
+                    <!-- paragraph -->
+                    <p th:text="${resume.heading}"></p>
+                    <br>
+                    <a th:href="@{${resume.link}}">Read More..</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- after banner end-->
+</body>
+</html>

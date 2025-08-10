@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+</head>
+<body>
+<!-- blog -->
+<div th:fragment="blog" class="blog" id="blog">
+    <div class="container">
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>Latest Blogs</h2>
+        </div>
+        <div class="row">
+            <div th:each="blog:${blogs}" class="col-md-6 col-sm-6">
+                <!-- blog entry -->
+                <div class="entry">
+                    <!-- blog entry image -->
+                    <img class="img-responsive" th:src="${blog.img}" alt="Blog"/>
+                    <!-- heading / blog post title -->
+                    <h3><a href="#" th:text="${blog.title}"></a></h3>
+                    <!-- blog information -->
+                    <span class="meta">
+									July 02, 2014 | Tag: Technology | By: David John
+								</span>
+                    <!-- paragraph -->
+                    <p th:text="${blog.paragraph}"></p>
+                </div>
+            </div>            
+        </div>
+        <div class="text-center">
+            <a href="#" class="btn btn-default">See More</a>
+        </div>
+    </div>
+</div>
+<!-- blog end -->
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+</head>
+<body>
+<!-- events -->
+<div th:fragment="event" class="event" id="event">
+    <div class="container">
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>Upcoming events</h2>
+        </div>
+        <div class="row">
+            <div th:each="event:${events}" class="col-md-4 col-sm-4">
+                <!-- event item -->
+                <div class="event-item">
+                    <!-- image -->
+                    <img class="img-responsive" th:src="${event.img}" alt="Events"/>
+                    <!-- heading -->
+                    <h4><a href="${event.link}" th:text="${event.heading}"></a></h4>
+                    <!-- sub text -->
+                    <span th:text="${event.sub}" class="sub-text"></span>
+                    <!-- paragraph -->
+                    <p th:text="${event.paragraph}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- events end -->
+</body>
+</html>

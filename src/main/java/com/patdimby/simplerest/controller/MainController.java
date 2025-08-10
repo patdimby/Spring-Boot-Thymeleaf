@@ -5,17 +5,15 @@ import com.patdimby.simplerest.model.*;
 import com.patdimby.simplerest.service.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/blog")
 //@PreAuthorize("hasRole('ROLE_ADMIN')")
+@CrossOrigin
 public class MainController {
    
 	private final BlogService blogService;
@@ -34,25 +32,32 @@ public class MainController {
 
     @GetMapping("/index")
     public String getIndex(Model model) {
-       /* List<Blog> blogs = blogService.getAllBlogs();
-		model.addAttribute("blogs", blogs);
-		List<Team> teams = teamService.getAllTeams();
-		model.addAttribute("teams", teams);
-		List<Event> events = eventService.getAllEvents();
-        model.addAttribute("events", events); */
+        AddAttributes(model);
+        model.addAttribute("title", "Blog - Home");
+        return "blog/index";
+    }
+
+    private void AddAttributes(Model model) {
+        List<Blog> blogs = blogService.getAllBlogs();
+        model.addAttribute("blogs", blogs);
+        List<Team> teams = teamService.getAllTeams();
+        model.addAttribute("teams", teams);
+        List<Event> events = eventService.getAllEvents();
+        model.addAttribute("events", events);
         List<Resume> resumes = resumeService.getAllResumes();
         model.addAttribute("resumes", resumes);
-        return "blog/index";
     }
 
     @GetMapping("/login")
     public String showLoginPage(Model model) {
+        AddAttributes(model);
         model.addAttribute("title", "Blog - Login");
         return "blog/login";
     }
 
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
+        AddAttributes(model);
         model.addAttribute("user", new UserDto());
         model.addAttribute("title", "Blog - Register");
         return "blog/registration";

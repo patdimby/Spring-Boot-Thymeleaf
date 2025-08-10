@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+</head>
+<body>
+<!-- team -->
+<div th:fragment="team" class="team" id="team">
+    <div class="container">
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>Executing Team</h2>
+        </div>
+        <div class="row">
+            <div th:each="team:${teams}" class="col-md-3 col-sm-3">
+                <!-- team member -->
+                <div class="member">
+                    <!-- images -->
+                    <img class="img-responsive" th:src="${team.img}" alt="Team Member"/>
+                    <!-- heading -->
+                    <h3 th:text="${team.heading}"></h3>
+                    <!-- designation -->
+                    <span class="dig" th:text="${team.designation}"></span>
+                    <!-- email -->
+                    <a href="#" th:text="${team.email}"></a>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+<!-- team end -->
+</body>
+</html>

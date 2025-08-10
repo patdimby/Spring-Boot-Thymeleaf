@@ -1,101 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-	<meta charset="utf-8">
-	<title th:text="${title}"></title>
-	<!-- Description, Keywords and Author -->
-	<meta name="description" content="Your description">
-	<meta name="keywords" content="Your,Keywords">
-	<meta name="author" content="ResponsiveWebInc">
+<head>
+    <meta charset="utf-8">
+    <title th:text="${title}"></title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your,Keywords">
+    <meta name="author" content="ResponsiveWebInc">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Styles -->
-	<link th:href="@{/blog/css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{/blog/fontawesome/css/fontawesome.css}" rel="stylesheet">
-	<link th:href="@{/blog/css/style.css}" rel="stylesheet">
+    <!-- Styles -->
+    <link th:href="@{/blog/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/blog/fontawesome/css/all.css}" rel="stylesheet">
+    <link th:href="@{/blog/css/style.css}" rel="stylesheet">
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="#">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="#">
 </head>
-  <body>
-    <div class="wrapper">
-      <header th:replace="blog/logreg::logreg"></header>
-      <!-- banner -->
-      <div class="banner">
+<body>
+<div class="wrapper">
+    <header th:replace="blog/components/logreg::logreg"></header>
+    <!-- banner -->
+    <div class="banner">
         <div class="container">
-          <!-- form content / register area -->
-          <div class="register-area">
-            <!-- heading -->
-            <h3>Sign Up, For An Account</h3>
-            <form role="form" id="register-form" th:object="${user}" th:action="@{/blog/register}" method="post">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleInputName1"
-                  placeholder="Fist Name"
-                  th:field="*{firstName}"
-                />
-              </div>
-              <div class="form-group">
-                <div class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-info">
-                    <input type="radio" name="options" id="option1" /> Male
-                  </label>
-                  <label class="btn btn-info">
-                    <input type="radio" name="options" id="option2" /> Female
-                  </label>
-                </div>
-              </div>
-              <div class="form-group">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  placeholder="Enter email"
-                  th:field="*{email}"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                  th:field="*{confirmpassword}"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword2"
-                  placeholder="Re-Password"
-                  th:field="*{password}"
-                />
-              </div>
-              <div class="checkbox form-group">
-                <label>
-                  <input type="checkbox" /> I agree with all terms and
-                  conditions.
-                </label>
-              </div>
-              <button type="submit" class="btn btn-default">SignUp</button
-              >&nbsp;
-              <button type="reset" class="btn btn-default">Reset</button>
-            </form>
-          </div>
+            <!-- form content / register area -->
+            <div class="register-area">
+                <!-- heading -->
+                <h3>Sign Up, For An Account</h3>
+                <form role="form" id="register-form" th:object="${user}" th:action="@{/blog/register}" method="post">
+                    <div class="form-group">
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="exampleInputName1"
+                                placeholder="Fist Name"
+                                th:field="*{firstName}"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-info">
+                                <input type="radio" name="options" id="option1"/> Male
+                            </label>
+                            <label class="btn btn-info">
+                                <input type="radio" name="options" id="option2"/> Female
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input
+                                type="email"
+                                class="form-control"
+                                id="exampleInputEmail1"
+                                placeholder="Enter email"
+                                th:field="*{email}"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                                type="password"
+                                class="form-control"
+                                id="exampleInputPassword1"
+                                placeholder="Password"
+                                th:field="*{confirmpassword}"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                                type="password"
+                                class="form-control"
+                                id="exampleInputPassword2"
+                                placeholder="Re-Password"
+                                th:field="*{password}"
+                        />
+                    </div>
+                    <div class="checkbox form-group">
+                        <label>
+                            <input type="checkbox"/> I agree with all terms and
+                            conditions.
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">SignUp
+                    </button
+                    >&nbsp;
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </form>
+            </div>
         </div>
-      </div>
-      <!-- banner end -->
-     <footer th:replace="blog/footer::footer"></footer>	
     </div>
-    <!-- Javascript files -->
-    <script th:src="@{/blog/js/jquery.js}"></script>
-    <script th:src="@{/blog/js/bootstrap.min.js}"></script>
-    <script th:src="@{/blog/js/respond.min.js}"></script>
-    <script th:src="@{/blog/js/html5shiv.js}"></script>
-    <script th:src="@{/blog/js/custom.js}"></script>
-  </body>
+    <!-- banner end -->
+
+    <!-- after banner -->
+    <div th:insert="blog/components/after::after"></div>
+    <!-- after banner end-->
+
+    <!-- events -->
+    <div th:insert="blog/components/event::event"></div>
+    <!-- events end -->
+
+    <!-- blog -->
+    <div th:insert="blog/components/blog::blog"></div>
+    <!-- blog end -->
+
+    <!-- subscribe -->
+    <div th:insert="blog/components/suscribe::suscribe"></div>
+    <!-- subscribe end -->
+
+    <!-- team -->
+    <div th:insert="blog/components/team::team"></div>
+    <!-- team end -->
+
+    <!-- footer -->
+    <footer th:replace="blog/components/footer::footer"></footer>
+    <!-- end footer -->
+
+</div>
+<!-- Javascript files -->
+<script th:src="@{/blog/js/jquery.js}"></script>
+<script th:src="@{/blog/js/bootstrap.min.js}"></script>
+<script th:src="@{/blog/js/respond.min.js}"></script>
+<script th:src="@{/blog/js/html5shiv.js}"></script>
+<script th:src="@{/blog/js/custom.js}"></script>
+</body>
 </html>

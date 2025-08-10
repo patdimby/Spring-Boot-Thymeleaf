@@ -6,7 +6,9 @@ import com.patdimby.simplerest.model.Role;
 import com.patdimby.simplerest.model.Sex;
 import com.patdimby.simplerest.model.UserRole;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,7 +35,8 @@ public class UserDto {
     @NotEmpty(message = "Email is mandatory")
     private String email;
 
-    @NotEmpty(message = "Password cannot be blank")
+    @NotBlank(message = "Password cannot be blank")
+    @Size(min = 5, message = "Password must be {min} length.")
     private String password;
 
     private String confirmpassword;
@@ -47,10 +50,10 @@ public class UserDto {
     @Override
     public String toString() {
         return "UserDto{" +
-               "id='" + id + '\'' +
-               ", name='" + firstName + '\'' +
-               ", email='" + email + '\'' +
-               ", role='" + role + '\'' +
-               '}';
+                "id='" + id + '\'' +
+                ", name='" + firstName + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
