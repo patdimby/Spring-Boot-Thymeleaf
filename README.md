@@ -10,19 +10,12 @@ A secure and user-friendly login & registration system built with:
 
 ✨ Features
 📝 User registration with validation
-
 🔐 Secure login with Spring Security
-
 👤 Role-based access control (USER, ADMIN)
-
 🎨 Responsive UI using Thymeleaf + Bootstrap
-
 🗃️ MySQL-backed user data
-
 📊 Health & metrics with Spring Boot Actuator
-
 ✨ Minimal boilerplate using Lombok
-
 🖼️ Demo Screenshots
 (Replace with your actual screenshots or demo GIFs)
 
@@ -40,18 +33,15 @@ Lombok	Java boilerplate reducer
 Spring Boot Actuator	Observability with health/metrics
 
 📁 Project Structure
-bash
-Copier
-Modifier
-src/
+
 ├── main/
-│   ├── java/com/example/app/
-│   │   ├── config/           # Security configuration
-│   │   ├── controller/       # Web controllers (login, register, dashboard)
-│   │   ├── model/            # User entity and roles
-│   │   ├── repository/       # JPA repositories
-│   │   ├── service/          # UserService, security logic
-│   │   └── Application.java  # Spring Boot main class
+   ├── java\com\patdimby\simplerest
+   ├── config/           # Security configuration
+   ├── controller/       # Web controllers (login, register, dashboard)
+   ├── model/            # User entity and roles
+   ├── repository/       # JPA repositories
+   ├── service/          # UserService, security logic
+   └── SimplerestApplication.java  # Spring Boot main class
 │   └── resources/
 │       ├── static/           # Bootstrap CSS, images, favicon
 │       ├── templates/        # Thymeleaf templates
@@ -62,9 +52,7 @@ src/
 │       └── application.yml   # Configuration
 └── test/                     # Unit and integration tests
 🧩 Thymeleaf Template Structure
-css
-Copier
-Modifier
+
 templates/
 ├── fragments/
 │   ├── header.html
