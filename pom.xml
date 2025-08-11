@@ -13,7 +13,7 @@
 	<artifactId>patdimby</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>patdimby</name>
-	<description>Rest api for Spring Boot</description>
+	<description>Thymeleaf and Bootstrap CSS with Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -132,7 +132,12 @@
 			<artifactId>h2</artifactId>
 			<version>2.3.232</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.2.4</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

@@ -12,14 +12,24 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/blog")
-//@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @CrossOrigin
+@AllArgsConstructor
 public class MainController {
    
+    @Autowired
 	private final BlogService blogService;
+	
+	@Autowired
 	private final EventService eventService;
+	
+	@Autowired
 	private final TeamService teamService;
+	
+	@Autowired
     private final UserService userService;
+	
+	@Autowired
     private final ResumeService resumeService;
 
     public MainController(BlogService blogService, EventService eventService, TeamService teamService, UserService userService, ResumeService resumeService) {
@@ -65,8 +75,6 @@ public class MainController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute UserDto userDto) {
-        userDto.setRole(UserRole.ROLE_ADMIN);
-        System.out.println(userDto);
         userService.saveUserDto(userDto);
         return "redirect:blog/login";
     }

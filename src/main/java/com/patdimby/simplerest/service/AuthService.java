@@ -27,7 +27,7 @@ public class AuthService {
 
     public AuthResponse register(@Valid RegisterRequest request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw new RuntimeException("Email déjà utilisé");
+            throw new RuntimeException("Email already used.");
         }
 
         UserRole userRole;
@@ -40,7 +40,7 @@ public class AuthService {
                     throw new IllegalArgumentException();
                 }
             } catch (IllegalArgumentException ex) {
-                throw new RuntimeException("Rôle invalide : uniquement ROLE_USER ou ROLE_ADMIN");
+                throw new RuntimeException("Invalid role : only ROLE_USER or ROLE_ADMIN");
             }
         }
 
@@ -61,16 +61,16 @@ public class AuthService {
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         String token = jwtService.generateToken(user);
         return new AuthResponse(token);
     }
 
-    // ✅ Méthode utilisée pour récupérer l’utilisateur courant
+    // ✅ Routin to get current user.
     public User getCurrentUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 }
