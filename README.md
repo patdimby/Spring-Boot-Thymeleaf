@@ -1,6 +1,6 @@
 🔐 Spring Boot Login and Registration Application
 
-A secure and user-friendly login & registration system
+    A secure and user-friendly login & registration system.
 
 ✨ Features
 -------------
@@ -102,9 +102,9 @@ logging.file.name=logs/spring-boot-logging.log
 
 You can seed users with roles like:
 
-ROLE_USER
++ ROLE_USER
 
-ROLE_ADMIN
++ ROLE_ADMIN
 
 
 
@@ -118,5 +118,5 @@ Spring Boot Docs
 + Bootstrap
 
 📫 Contact
-Author: @yourusername
-📧 you@example.com
+Author: @patdimby
+📧 patdimby@outlook.fr
