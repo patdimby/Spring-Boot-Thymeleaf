@@ -1,10 +1,6 @@
 🔐 Spring Boot Login and Registration Application
 
-
-
-
-
-## A secure and user-friendly login & registration system
+A secure and user-friendly login & registration system
 
 ✨ Features
 -------------
@@ -32,7 +28,6 @@
 + Spring Boot Actuator	Observability with health/metrics
 
 📁 Project Structure
-
 ```
 src/
 =======
@@ -55,7 +50,6 @@ src/
 └── test/                     # Unit and integration tests
 ```
 🧩 Thymeleaf Template Structure
-
 ```
 =======
 templates/
