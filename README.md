@@ -1,36 +1,36 @@
-🔐 Spring Boot Login & Registration Application
+🔐 Spring Boot Login and Registration Application
 
 
 
 
 
-A secure and user-friendly login & registration system:
+## A secure and user-friendly login & registration system:
 
 ✨ Features
 ***********
 
-📝 User registration with validation
-🔐 Secure login with Spring Security
-👤 Role-based access control (USER, ADMIN)
-🎨 Responsive UI using Thymeleaf + Bootstrap
-🗃️ MySQL-backed user data
-📊 Health & metrics with Spring Boot Actuator
-✨ Minimal boilerplate using Lombok
-🖼️ Demo Screenshots
+- 📝 User registration with validation
+- 🔐 Secure login with Spring Security
+- 👤 Role-based access control (USER, ADMIN)
+- 🎨 Responsive UI using Thymeleaf + Bootstrap
+- 🗃️ MySQL-backed user data
+- 📊 Health & metrics with Spring Boot Actuator
+- ✨ Minimal boilerplate using Lombok
+- 🖼️ Demo Screenshots
 (Replace with your actual screenshots or demo GIFs)
 
 🧱 Tech Stack
 
 *************
-Tech	Description
-Spring Boot	Java backend framework
-Spring Security	Authentication & Authorization
-Spring Data JPA	ORM and DB layer
-Thymeleaf	Template engine for dynamic HTML
-Bootstrap 5	CSS framework for responsive design
-MySQL	Relational database
-Lombok	Java boilerplate reducer
-Spring Boot Actuator	Observability with health/metrics
+### Tech	        Description
+- Spring Boot	    Java backend framework
+- Spring Security	Authentication & Authorization
+- Spring Data JPA	ORM and DB layer
+- Thymeleaf	        Template engine for dynamic HTML
+- Bootstrap and	CSS framework for responsive design
+- MySQL	            Relational database
+- Lombok	        Java boilerplate reducer
+- Spring Boot Actuator	Observability with health/metrics
 
 📁 Project Structure
 
@@ -98,6 +98,7 @@ management:
     health:
       show-details: always
 🧪 User Roles
+
 You can seed users with roles like:
 
 ROLE_USER
