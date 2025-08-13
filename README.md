@@ -101,22 +101,16 @@ logging.file.name=logs/spring-boot-logging.log
 🧪 User Roles
 
 You can seed users with roles like:
-
 + ROLE_USER
-
 + ROLE_ADMIN
-
-
 
 🙌 Acknowledgements
 Spring Boot Docs
 
-+ Spring Security Guide
-
-+ Thymeleaf
-
-+ Bootstrap
++ Spring Security Guide(https://spring.io/guides/gs/securing-web)
++ Thymeleaf(https://www.thymeleaf.org/)
++ Bootstrap(https://getbootstrap.com/)
 
 📫 Contact
-Author: @patdimby
+Author: Patrick Dimbisoa
 📧 patdimby@outlook.fr
