@@ -4,11 +4,10 @@
 
 
 
-## A secure and user-friendly login & registration system:
+## A secure and user-friendly login & registration system
 
 ✨ Features
-***********
-*
+-------------
 + 📝 User registration with validation
 + 🔐 Secure login with Spring Security
 + 👤 Role-based access control (USER, ADMIN)
@@ -20,10 +19,9 @@
 (Replace with your actual screenshots or demo GIFs)
 
 🧱 Tech Stack
-
-*************
+-------------
 ### Tech	        Description
-*
+
 + Spring Boot	    Java backend framework
 + Spring Security	Authentication & Authorization
 + Spring Data JPA	ORM and DB layer
@@ -38,7 +36,6 @@
 ```
 src/
 =======
-
 ├── main/
    ├── java\com\patdimby\simplerest
    ├── config/           # Security configuration
@@ -61,8 +58,6 @@ src/
 
 ```
 =======
-
-
 templates/
 ├── fragments/
 │   ├── header.html
@@ -72,13 +67,13 @@ templates/
 └── dashboard.html
 Example login.html snippet:
 ```
-
 <form th:action="@{/login}" method="post">
   <input type="text" name="username" class="form-control" placeholder="Username" required />
   <input type="password" name="password" class="form-control" placeholder="Password" required />
   <button type="submit" class="btn btn-primary">Login</button>
 </form>
-⚙️ Configuration (application.yml)
+
+⚙️ Configuration (application.properties)
 
 spring:
   datasource:
@@ -106,40 +101,7 @@ ROLE_USER
 
 ROLE_ADMIN
 
-In data.sql (optional):
 
-sql
-
-INSERT INTO users (id, username, password, role) VALUES
-(1, 'user', '$2a$10$encodedpassword', 'ROLE_USER');
-🌐 Actuator Endpoints
-Endpoint	Description
-/actuator/health	App health status
-/actuator/metrics	Performance metrics
-/actuator/env	App environment info
-
-🐳 Optional: Run with Docker
-Create a Dockerfile:
-
-Dockerfile
-
-FROM openjdk:17-jdk-slim
-COPY target/app.jar app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
-Build and Run:
-
-bash
-r
-docker build -t springboot-login-app .
-docker run -p 8080:8080 springboot-login-app
-🧪 Testing
-Run all tests:
-
-bash
-
-./mvnw test
-📜 License
-This project is licensed under the MIT License.
 
 🙌 Acknowledgements
 Spring Boot Docs
