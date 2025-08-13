@@ -59,34 +59,45 @@ templates/
 ├── login.html
 ├── register.html
 └── dashboard.html
-Example login.html snippet:
 ```
-<form th:action="@{/login}" method="post">
-  <input type="text" name="username" class="form-control" placeholder="Username" required />
-  <input type="password" name="password" class="form-control" placeholder="Password" required />
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
 
 ⚙️ Configuration (application.properties)
+```properties
+spring.application.name=simplerest
 
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/user_db
-    username: root
-    password: yourpassword
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+server.port = 8082
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
+# DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring.datasource.url=jdbc:mysql://localhost:3306/employees?create
+spring.datasource.username=user
+spring.datasource.password=password
+spring.data.jpa.repositories.enabled=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.generate-ddl=true
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto=update
+
+# In order to display spring-boot-actuator endpoints, simply add the following property:
+springdoc.show-actuator=true
+springdoc.use-management-port=true
+
+management.server.port=9090
+# This property enables the swagger-ui endpoints to be exposed beneath the actuator base path.
+management.endpoints.web.exposure.include=swagger-ui
+# http://localhost:9090/actuator/swagger-ui
+
+spring.thymeleaf.cache=false
+
+# Show or not log for each sql query
+spring.jpa.show-sql = true
+logging.level.org.hibernate=ERROR
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type=TRACE
+
+logging.level.org.springframework.web=INFO
+logging.level.guru.springframework.controllers=DEBUG
+logging.file.name=logs/spring-boot-logging.log
+```
 🧪 User Roles
 
 You can seed users with roles like:
@@ -100,11 +111,11 @@ ROLE_ADMIN
 🙌 Acknowledgements
 Spring Boot Docs
 
-Spring Security Guide
++ Spring Security Guide
 
-Thymeleaf
++ Thymeleaf
 
-Bootstrap
++ Bootstrap
 
 📫 Contact
 Author: @yourusername
