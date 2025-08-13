@@ -1,12 +1,20 @@
-🔐 Spring Boot Login & Registration App
+🔐 Spring Boot Login & Registration Application
 
 
 
 
 
-A secure and user-friendly login & registration system built with:
+# A secure and user-friendly login & registration system built with:
 
-🧰 Spring Boot • Spring Security • Thymeleaf • Bootstrap • JPA • MySQL • Lombok • Actuator
+🧰 
+## Spring Boot
+## Spring Security 
+## Thymeleaf
+## Bootstrap
+## JPA
+## MySQL
+## Lombok
+## Actuator
 
 ✨ Features
 📝 User registration with validation
@@ -40,9 +48,7 @@ Lombok	Java boilerplate reducer
 Spring Boot Actuator	Observability with health/metrics
 
 📁 Project Structure
-bash
-Copier
-Modifier
+```
 src/
 ├── main/
 │   ├── java/com/example/app/
@@ -61,10 +67,9 @@ src/
 │       │   └── fragments/    # Reusable layouts (header, footer, etc.)
 │       └── application.yml   # Configuration
 └── test/                     # Unit and integration tests
+```
 🧩 Thymeleaf Template Structure
-css
-Copier
-Modifier
+```
 templates/
 ├── fragments/
 │   ├── header.html
@@ -73,19 +78,15 @@ templates/
 ├── register.html
 └── dashboard.html
 Example login.html snippet:
+```
 
-html
-Copier
-Modifier
 <form th:action="@{/login}" method="post">
   <input type="text" name="username" class="form-control" placeholder="Username" required />
   <input type="password" name="password" class="form-control" placeholder="Password" required />
   <button type="submit" class="btn btn-primary">Login</button>
 </form>
 ⚙️ Configuration (application.yml)
-yaml
-Copier
-Modifier
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/user_db
@@ -114,8 +115,7 @@ ROLE_ADMIN
 In data.sql (optional):
 
 sql
-Copier
-Modifier
+
 INSERT INTO users (id, username, password, role) VALUES
 (1, 'user', '$2a$10$encodedpassword', 'ROLE_USER');
 🌐 Actuator Endpoints
@@ -128,24 +128,21 @@ Endpoint	Description
 Create a Dockerfile:
 
 Dockerfile
-Copier
-Modifier
+
 FROM openjdk:17-jdk-slim
 COPY target/app.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 Build and Run:
 
 bash
-Copier
-Modifier
+r
 docker build -t springboot-login-app .
 docker run -p 8080:8080 springboot-login-app
 🧪 Testing
 Run all tests:
 
 bash
-Copier
-Modifier
+
 ./mvnw test
 📜 License
 This project is licensed under the MIT License.
