@@ -4,19 +4,11 @@
 
 
 
-# A secure and user-friendly login & registration system built with:
-
-
-## Spring Boot
-## Spring Security 
-## Thymeleaf
-## Bootstrap
-## JPA
-## MySQL
-## Lombok
-## Actuator
+A secure and user-friendly login & registration system:
 
 ✨ Features
+***********
+
 📝 User registration with validation
 🔐 Secure login with Spring Security
 👤 Role-based access control (USER, ADMIN)
@@ -28,6 +20,8 @@
 (Replace with your actual screenshots or demo GIFs)
 
 🧱 Tech Stack
+
+*************
 Tech	Description
 Spring Boot	Java backend framework
 Spring Security	Authentication & Authorization
