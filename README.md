@@ -1,7 +1,5 @@
-🔐 Spring Boot Login and Registration Application
-
-    A secure and user-friendly login & registration system.
-
+# 🔐 Spring Boot Login and Registration Application
+A secure and user-friendly login & registration system.
 ✨ Features
 -------------
 + 📝 User registration with validation
