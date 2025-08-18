@@ -1,5 +1,6 @@
-# 🔐 Spring Boot Login and Registration Application
+# Spring-Boot-Thymeleaf
 A secure and user-friendly login & registration system.
+
 ✨ Features
 -------------
 + 📝 User registration with validation
